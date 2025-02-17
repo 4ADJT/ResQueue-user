@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.imaginer</groupId>
     <artifactId>resqueue-user</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>resqueue-user</name>
     <description>resqueue-user</description>
     <url/>
