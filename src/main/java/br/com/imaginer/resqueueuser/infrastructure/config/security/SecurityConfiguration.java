@@ -33,6 +33,9 @@ public class SecurityConfiguration {
             .pathMatchers("/actuator/**").permitAll()
             .pathMatchers("/users/create").permitAll()
             .pathMatchers("/auth/login/**").permitAll()
+            .pathMatchers("/users/v3/**").permitAll()
+            .pathMatchers("/swagger-ui/**").permitAll()
+            .pathMatchers("/webjars/**").permitAll()
             .anyExchange().authenticated()
 
         ).oauth2ResourceServer(oauth2 -> oauth2
@@ -46,4 +49,5 @@ public class SecurityConfiguration {
   public ReactiveJwtDecoder jwtDecoder() {
     return ReactiveJwtDecoders.fromIssuerLocation(jwtProperties.getIssuerUri());
   }
+
 }

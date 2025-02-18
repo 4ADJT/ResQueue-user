@@ -22,3 +22,15 @@ keycloak:
   base-url: ${AUTH_BASE_URL:http://localhost:9000}
   client-id: resqueue-client
   client-secret: ${AUTH_RESQUEUE_CLIENT_SECRET}
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /users/v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /docs
+    config-url: /users/v3/api-docs/swagger-config
+    urls:
+      - name: users-service
+        url: /users/v3/api-docs
