@@ -10,7 +10,7 @@ Este serviço faz parte da arquitetura de **microserviços**, sendo **descoberto
 ## 🚀 **Tecnologias Utilizadas**
 - **Java 21 (Corretto)**
 - **Spring Boot 3 (WebFlux, Security, Eureka Client)**
-- **Spring Cloud Gateway**
+- **Spring Cloud Gateway (user é um de seus serviços)**
 - **Reactor (Programação Reativa)**
 - **Keycloak (OAuth 2.0)**
 - **Maven**
@@ -46,6 +46,18 @@ keycloak:
   base-url: ${AUTH_BASE_URL:http://localhost:9000}
   client-id: resqueue-client
   client-secret: ${AUTH_RESQUEUE_CLIENT_SECRET}
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /users/v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /docs
+    config-url: /users/v3/api-docs/swagger-config
+    urls:
+      - name: users-service
+        url: /users/v3/api-docs
 ```
 
 ### 🔑 **Variáveis Explicadas**
@@ -57,3 +69,32 @@ keycloak:
 | `AUTH_RESQUEUE_CLIENT_SECRET` | **Client Secret** do Keycloak para autenticação |
 
 ---
+
+## 🚀 **Executando o Projeto**
+###  **Rodando com Docker**
+Uma imagem Docker já está disponível no **Docker Hub**:
+
+```sh
+docker pull rodrigobrocchi/resqueue-user:latest
+docker run -p 8082:8082 rodrigobrocchi/resqueue-user:latest
+```
+
+Se quiser construir sua própria imagem Docker:
+```dockerfile
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+COPY target/resqueue-user.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+```
+E execute:
+```sh
+docker build -t resqueue-user .
+docker run -p 8082:8082 resqueue-user
+```
+
+---
+
+## 📄 **Documentação da API**
+A documentação da API está disponível através do **Gateway do Resqueue**, que pode ser acessado no repositório:
+
+🔗 **[ResQueue Gateway - GitHub](https://github.com/4ADJT/ResQueue-gateway)**
