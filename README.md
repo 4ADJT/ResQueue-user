@@ -76,7 +76,12 @@ Uma imagem Docker já está disponível no **Docker Hub**:
 
 ```sh
 docker pull rodrigobrocchi/resqueue-user:latest
-docker run -p 8082:8082 rodrigobrocchi/resqueue-user:latest
+docker run -p 8082:8082 \
+  -e KC_BASE_ISSUER_URL=http://localhost:9000 \
+  -e EUREKA_URL=http://localhost:8761/eureka \
+  -e AUTH_BASE_URL=http://localhost:9000 \
+  -e AUTH_RESQUEUE_CLIENT_SECRET=[!!! SEU CLIENT SECRET DO KEYCLOAK !!!] \
+  rodrigobrocchi/resqueue-user:latest
 ```
 
 ---
