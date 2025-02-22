@@ -79,19 +79,6 @@ docker pull rodrigobrocchi/resqueue-user:latest
 docker run -p 8082:8082 rodrigobrocchi/resqueue-user:latest
 ```
 
-Se quiser construir sua própria imagem Docker:
-```dockerfile
-FROM eclipse-temurin:21-jdk
-WORKDIR /app
-COPY target/resqueue-user.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
-```
-E execute:
-```sh
-docker build -t resqueue-user .
-docker run -p 8082:8082 resqueue-user
-```
-
 ---
 
 ## 📄 **Documentação da API**
