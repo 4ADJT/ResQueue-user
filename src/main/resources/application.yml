@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: resqueue-user
+    name: RESQUEUE-USER
 
   security:
     oauth2:
